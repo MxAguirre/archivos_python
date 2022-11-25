@@ -46,7 +46,60 @@ def desafio():
     # Al final de esta función retornar (return) la variable stock
 
     # Comenzar aquí, recuerde el identado dentro de esta funcion
-
+    while True:
+        agregar = str(input('¿Que desea agregar al stock? \n'))
+        if agregar.lower() in stock:
+            if agregar.lower() == 'tornillos':
+                cantidad = input('Ingrese la cantidad\n')
+                while cantidad.isdigit() == False:
+                    print('Debe ingresar un valor numerico')
+                    cantidad = input('Ingrese la cantidad\n')
+                else:
+                    total = stock['tornillos'] + int(cantidad)
+                    stock['tornillos'] = total
+                    continuar = str(input('Desea agregar algo mas?\n'))
+                    while continuar != 'si' and continuar != 'fin':
+                        continuar = str(input('Desea agregar algo mas?\n'))
+                    if continuar == 'si':
+                        pass
+                    elif continuar == 'fin':
+                        break            
+            if agregar.lower() == 'tuercas':
+                cantidad = input('Ingrese la cantidad\n')
+                while cantidad.isdigit() == False:
+                    print('Debe ingresar un valor numerico')
+                    cantidad = input('Ingrese la cantidad\n')
+                else:
+                    total = stock['tuercas'] + int(cantidad)
+                    stock['tuercas'] = total
+                    continuar = str(input('Desea agregar algo mas?\n'))
+                    while continuar != 'si' and continuar != 'fin':
+                        continuar = str(input('Desea agregar algo mas?\n'))
+                    if continuar == 'si':
+                        pass
+                    elif continuar == 'fin':
+                        break
+            if agregar.lower() == 'arandelas':
+                cantidad = input('Ingrese la cantidad\n')
+                while cantidad.isdigit() == False:
+                    print('Debe ingresar un valor numerico')
+                    cantidad = input('Ingrese la cantidad\n')
+                else:
+                    total = stock['arandelas'] + int(cantidad)
+                    stock['arandelas'] = total
+                    continuar = str(input('Desea agregar algo mas?\n'))
+                    while continuar != 'si' and continuar != 'fin':
+                        continuar = str(input('Desea agregar algo mas?\n'))
+                    if continuar == 'si':
+                        pass
+                    elif continuar == 'fin':
+                        break
+        elif agregar == 'fin':
+            print('No se agrego nada al stock')
+            break
+        else:
+            print('Debe ingresar tornillos, tuercas o arandelas')
+    print(stock)
 
 if __name__ == '__main__':
     print("Bienvenidos a otra clase de Inove con Python")

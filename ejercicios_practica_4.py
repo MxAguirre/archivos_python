@@ -16,9 +16,7 @@ import csv
 # manejo de excepciones
 
 def desafio(ambientes):
-    print('Ejercicios con archivos CSV complejos')
-    archivo = 'propiedades.csv'
-
+    
     # Realice un programa que abra el archivo CSV "propiedades.csv"
     # en modo lectura. Recorrar dicho archivo y contar
     # la cantidad de departamentos de 2 ambientes y la cantidad
@@ -39,7 +37,32 @@ def desafio(ambientes):
 
     # Comenzar aquí, recuerde el identado dentro de esta funcion
 
+    print('Ejercicios con archivos CSV complejos')
+    
+    archivo = open('propiedades.csv')
+    data = list(csv.DictReader(archivo))
+    archivo.close()
+    cantidad_ambientes = ambientes[0]
+    cantidad = 0
+
+    for i in range(len(data)):
+        depto = data[i]
+        for k in depto.keys():
+            if  k == 'ambientes':
+                if cantidad_ambientes == data[i][k]:
+                    cantidad += 1
+    return cantidad
+
+              
+        
+        
 
 if __name__ == '__main__':
     print("Bienvenidos a otra clase de Inove con Python")
-    desafio("2_ambientes")
+    print('Ingrese la cantidad de ambientes')
+    ambientes = str(input('2 ambientes o 3 ambientes\n'))
+    while ambientes != '2 ambientes' and ambientes != '3 ambientes':
+        ambientes = str(input('Debe ingresar: 2 ambientes o 3 ambientes\n'))
+    resultado = desafio(ambientes)
+    print(f'La cantidad de deperatamentos de {ambientes} es {resultado}')
+    
